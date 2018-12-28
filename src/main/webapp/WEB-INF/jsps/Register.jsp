@@ -7,14 +7,13 @@
 </head>
 <script type="text/javascript">
 	function goToLogin() {
-		document.forms[0].action = "login";
+		document.forms[0].action = "loginUser";
 		document.forms[0].method = "post";
 		document.forms[0].submit();
 	}
 </script>
 <body>
-	<form action="register"
-		method="POST">
+	<form action="register" method="POST">
 		<table width="30%" align="center">
 			<
 			<p align="center">
@@ -28,20 +27,24 @@
 
 			<tr>
 				<td>Full Name:</td>
-				<td><input type="text" name="name" value="${user.name}"></td>
+				<td><input type="text" name="name" value="${user.name}"
+					required="required"></td>
 			</tr>
 			<tr>
 				<td>Username:</td>
-				<td><input type="text" name="email" value="${user.email}"></td>
+				<td><input type="text" name="email" value="${user.email}"
+					required="required"></td>
 			</tr>
 			<tr>
 				<td>Password:</td>
 				<td><input type="Password" name="password"
-					value="${emp.password}"></td>
+					value="${emp.password}" required="required"></td>
 			</tr>
 			<tr>
 				<td>Mobile Number:</td>
-				<td><input type="text" name="mobile" value="${emp.mobile}"></td>
+				<td><input type="text" name="mobile" pattern="[0-9]{10}"
+					title="mobile number should contain ten digits"
+					value="${emp.mobile}" required="required"></td>
 			</tr>
 		</table>
 		<div align="center">
