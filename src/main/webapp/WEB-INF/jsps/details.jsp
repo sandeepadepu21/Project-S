@@ -11,7 +11,8 @@
 	function deleteUser(mail) {
 		var r = confirm("Are you sure to delete " + mail + "?");
 		if (r == true) {
-			document.forms[0].action = "deleteUser?mailId=" + mail;
+			document.forms[0].action = "${pageContext.request.contextPath}/deleteUser?mailId="
+					+ mail;
 			document.forms[0].method = "post";
 			document.forms[0].submit();
 		}
@@ -20,7 +21,8 @@
 	function updateUser(mail) {
 		var r = confirm("Are you sure to update " + mail + "?");
 		if (r == true) {
-			document.forms[0].action = "editUser?mailId=" + mail;
+			document.forms[0].action = "${pageContext.request.contextPath}/editUser?mailId="
+					+ mail;
 			document.forms[0].method = "post";
 			document.forms[0].submit();
 		}
@@ -38,7 +40,9 @@
 			Logout</a>
 	</div>
 	</br>
-
+	<p align="center">
+		<font color="red">${err_msg}</font>
+	</p>
 	<form action="">
 		<table border="2" align="center">
 			<h3 align="center">

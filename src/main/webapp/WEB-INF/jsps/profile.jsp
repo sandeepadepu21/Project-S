@@ -11,7 +11,7 @@
 		Welcome <b>${userName}</b>
 	</p>
 	</br>
-	<form action="getAllUsers">
+	<form action="${pageContext.request.contextPath}/getAllUsers">
 		<div style="text-align: center">
 			<p align="center">Get All Record Here!</p>
 			<input type="submit" value="Get All Details" />

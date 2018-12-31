@@ -7,4 +7,5 @@ public class TwitterConstants {
 	public static String REGISTER_PAGE = "/WEB-INF/jsps/register";
 	public static String DETAILS_PAGE = "/WEB-INF/jsps/details";
 	public static String EDIT_USER_PAGE = "/WEB-INF/jsps/editUser";
+	public static String PAGE_NOT_FOUND_PAGE = "/WEB-INF/jsps/pageNotFound";
 }

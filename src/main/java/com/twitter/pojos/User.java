@@ -15,6 +15,8 @@ public class User {
 
 	private String mobile;
 
+	private String Role = "USER";
+
 	public String getName() {
 		return Name;
 	}
@@ -47,5 +49,4 @@ public class User {
 		this.mobile = mobile;
 	}
 
-	
 }

@@ -1,5 +1,6 @@
 package com.twitter.serviceControllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +44,15 @@ public class ServiceController {
 		List<User> list = dc.editRecord(email);
 		m.addAttribute("usrList", list.get(0));
 		return constants.EDIT_USER_PAGE;
-	}
+	}	
 
-	public List<User> deleteUser(String email) {
-		System.out.println("deleteUser::ServiceController");
+	public List<User> deleteUser(String email, Model m, Principal p) {
+		System.out.println("deleteUser::ServiceController");	
+		if( p.getName().equals(email)) {
+			m.addAttribute("err_msg", "You can't delete your own account!");
+			List<User> list = getAllUsers();
+			return list;
+		}
 		List<User> list = dc.deleteRecord(email);
 		return list;
 	}

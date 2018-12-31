@@ -22,5 +22,27 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
+
+	<bean id="connection"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+		<property name="driverClassName"
+			value="com.mysql.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/twitter" />
+		<property name="username" value="root" />
+		<property name="password" value="12345" />
+	</bean>
+	
+	<bean id="roleVoter"
+		class="org.springframework.security.access.vote.RoleVoter">
+		<property name="rolePrefix" value="" />
+	</bean>
+
+	<bean id="accessDecisionManager"
+		class="org.springframework.security.access.vote.AffirmativeBased">
+		<constructor-arg ref="roleVoter" />
+
+	</bean>
 </beans>
 	

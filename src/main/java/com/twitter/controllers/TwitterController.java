@@ -1,5 +1,6 @@
 package com.twitter.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class TwitterController {
 	}
 
 	@RequestMapping(value = "/loginUser")
-	public String goToLogin() {
+	public String goToLogin() {		
 		System.out.println("goToLogin::TwitterController");
 		return constants.LOGIN_PAGE;
 	}
@@ -52,9 +53,9 @@ public class TwitterController {
 	}
 
 	@RequestMapping(value = "/deleteUser")
-	public String deleteUser(@RequestParam("mailId") String email, Model m) {
-		System.out.println("deleteUser::TwitterController");
-		List<User> list = sc.deleteUser(email);
+	public String deleteUser(@RequestParam("mailId") String email, Model m, Principal p) {
+		System.out.println("deleteUser::TwitterController");		
+		List<User> list = sc.deleteUser(email,m, p);
 		m.addAttribute("userList", list);
 		return constants.DETAILS_PAGE;
 	}
@@ -62,14 +63,18 @@ public class TwitterController {
 	@RequestMapping(value = "/editUser")
 	public String editUser(@RequestParam("mailId") String email, Model m) {
 		System.out.println("editUser::TwitterController");
-
 		return sc.editUser(email, m);
 	}
-	
+
 	@RequestMapping(value = "/updateUser")
 	public String updateUser(User u, Model m) {
 		System.out.println("updateUser::TwitterController");
-		
-		return sc.updateUser(u,m);
+		return sc.updateUser(u, m);
+	}
+
+	@RequestMapping(value= "/pageNotFound")
+	public String pageNotFound(Model m) {
+		m.addAttribute("err_msg", "The Resource you are accessing is not found or You don't have Permission to access");
+		return constants.PAGE_NOT_FOUND_PAGE;
 	}
 }

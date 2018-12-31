@@ -7,7 +7,8 @@
 <title>Edit User</title>
 </head>
 <body>
-	<form action="updateUser" method="POST">
+	<form action="${pageContext.request.contextPath}/updateUser"
+		method="POST">
 		<table width="30%" align="center">
 			<tr>
 				<td colspan=2><center>

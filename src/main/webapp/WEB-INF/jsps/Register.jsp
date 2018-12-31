@@ -13,7 +13,7 @@
 	}
 </script>
 <body>
-	<form action="register" method="POST">
+	<form action="${pageContext.request.contextPath}/register" method="POST">
 		<table width="30%" align="center">
 			<
 			<p align="center">
